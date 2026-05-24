@@ -169,7 +169,7 @@ const COLORS=['#ef4444','#6366f1','#22c55e','#f59e0b','#38bdf8','#f472b6','#a78b
 let state = { teams:{ home:{name:"",col:"#ef4444"}, away:{name:"",col:"#6366f1"} } };
 let dbt = {home:null,away:null};
 
-const ws = new WebSocket(`ws://${location.host}`);
+const ws = new WebSocket(`${location.protocol === 'https:' ? 'wss' : 'ws'}://${location.host}`);
 const dot = document.getElementById('ws-dot');
 
 ws.onopen = () => dot.classList.add('connected');

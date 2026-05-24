@@ -48,7 +48,7 @@ let state = {
   comp:"Liga Portugal"
 };
 
-const ws = new WebSocket(`ws://${location.host}`);
+const ws = new WebSocket(`${location.protocol === 'https:' ? 'wss' : 'ws'}://${location.host}`);
 
 ws.onmessage = e => {
   const msg = JSON.parse(e.data);
