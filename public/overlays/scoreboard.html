@@ -19,8 +19,8 @@ body{background:transparent;font-family:'Segoe UI',system-ui,sans-serif;color:#f
 .sb-ft-badge{background:rgba(160,174,192,.08);border:1px solid rgba(160,174,192,.15);border-radius:20px;padding:3px 10px;font-size:10px;font-weight:700;color:#718096}
 .sb-main{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:20px 24px;gap:12px}
 .sb-team{display:flex;flex-direction:column;align-items:center;gap:10px}
-.sb-logo{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;overflow:hidden;border:2px solid rgba(255,255,255,.1);background:transparent;box-shadow:0 4px 20px rgba(0,0,0,.4)}
-.sb-logo img{width:90%;height:90%;object-fit:contain;mix-blend-mode:multiply}
+.sb-logo{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;overflow:hidden;border:2px solid rgba(255,255,255,.1);background:#fff;box-shadow:0 4px 20px rgba(0,0,0,.4)}
+.sb-logo img{width:85%;height:85%;object-fit:contain}
 .sb-logo-init{font-size:18px;font-weight:800}
 .sb-team-name{font-size:13px;font-weight:700;text-align:center}
 .sb-center{display:flex;flex-direction:column;align-items:center;gap:6px}
@@ -48,19 +48,41 @@ let state = {
   comp:"Liga Portugal"
 };
 
-const ws = new WebSocket(`${location.protocol==="https:"?"wss":"ws"}://${location.host}`);
+// Try WebSocket first, fall back to polling
+const proto = location.protocol === 'https:' ? 'wss' : 'ws';
+let ws;
+let polling = false;
 
-ws.onmessage = e => {
-  const msg = JSON.parse(e.data);
-  if(msg.type === "state"){
-    const prevHome = state.home, prevAway = state.away;
-    state = msg.state;
-    render(prevHome, prevAway);
-  } else if(msg.type === "tick"){
-    state.min = msg.min; state.sec = msg.sec; state.period = msg.period;
-    updateTime();
-  }
-};
+function connect() {
+  try {
+    ws = new WebSocket(`${proto}://${location.host}`);
+    ws.onopen = () => { console.log('WS connected'); polling = false; };
+    ws.onmessage = e => {
+      const msg = JSON.parse(e.data);
+      if(msg.type === "state"){ const ph=state.home,pa=state.away; state=msg.state; render(ph,pa); }
+      else if(msg.type === "tick"){ state.min=msg.min; state.sec=msg.sec; state.period=msg.period; updateTime(); }
+    };
+    ws.onerror = () => startPolling();
+    ws.onclose = () => { if(!polling) setTimeout(connect, 3000); };
+  } catch(e) { startPolling(); }
+}
+
+function startPolling() {
+  if(polling) return;
+  polling = true;
+  console.log('Falling back to polling');
+  setInterval(async () => {
+    try {
+      const r = await fetch('/api/state');
+      const newState = await r.json();
+      const ph=state.home, pa=state.away;
+      state = newState;
+      render(ph, pa);
+    } catch(e) {}
+  }, 1000);
+}
+
+connect();
 
 function timeStr(){ if(state.period==="HT") return "HT"; if(state.period==="FT") return "FT"; return state.min+"'"; }
 function periodLabel(){ return {"1H":"1ª Parte","2H":"2ª Parte","HT":"Intervalo","ET":"Prol.","FT":"Terminado"}[state.period]||state.period; }
@@ -86,10 +108,10 @@ function logoBlock(side){
 }
 
 function updateTime(){
-  const t = document.querySelector(".sb-time");
-  const p = document.querySelector(".sb-period-badge");
-  if(t) t.textContent = timeStr();
-  if(p) p.textContent = periodLabel();
+  const t=document.querySelector(".sb-time");
+  const p=document.querySelector(".sb-period-badge");
+  if(t) t.textContent=timeStr();
+  if(p) p.textContent=periodLabel();
 }
 
 function render(prevHome, prevAway){
@@ -98,10 +120,7 @@ function render(prevHome, prevAway){
   document.getElementById("sb-wrap").innerHTML=`
     <div class="sb">
       <div class="sb-strip" style="background:linear-gradient(90deg,${hc},${ac})"></div>
-      <div class="sb-header">
-        <span class="sb-comp">${state.comp||"COMPETIÇÃO"}</span>
-        ${statusBadge()}
-      </div>
+      <div class="sb-header"><span class="sb-comp">${state.comp||"COMPETIÇÃO"}</span>${statusBadge()}</div>
       <div class="sb-main">
         <div class="sb-team">${logoBlock("home")}<div class="sb-team-name">${state.teams.home.name||"Casa"}</div></div>
         <div class="sb-center">
@@ -119,9 +138,8 @@ function render(prevHome, prevAway){
       </div>
       ${recent.length?`<div class="sb-events">${recent.map(ev=>`<div class="sb-event"><div class="sb-event-min">${ev.min}'</div>${evIcon(ev.type)}<div class="sb-event-txt">${ev.txt}</div></div>`).join("")}</div>`:""}
     </div>`;
-  // Animate goal
-  if(prevHome !== undefined && state.home > prevHome){ const el=document.getElementById("sc-home"); if(el){el.classList.remove("goal-pop");void el.offsetWidth;el.classList.add("goal-pop");} }
-  if(prevAway !== undefined && state.away > prevAway){ const el=document.getElementById("sc-away"); if(el){el.classList.remove("goal-pop");void el.offsetWidth;el.classList.add("goal-pop");} }
+  if(prevHome!==undefined&&state.home>prevHome){const el=document.getElementById("sc-home");if(el){el.classList.remove("goal-pop");void el.offsetWidth;el.classList.add("goal-pop");}}
+  if(prevAway!==undefined&&state.away>prevAway){const el=document.getElementById("sc-away");if(el){el.classList.remove("goal-pop");void el.offsetWidth;el.classList.add("goal-pop");}}
 }
 
 render();

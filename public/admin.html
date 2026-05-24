@@ -169,18 +169,33 @@ const COLORS=['#ef4444','#6366f1','#22c55e','#f59e0b','#38bdf8','#f472b6','#a78b
 let state = { teams:{ home:{name:"",col:"#ef4444"}, away:{name:"",col:"#6366f1"} } };
 let dbt = {home:null,away:null};
 
-const ws = new WebSocket(`ws://${location.host}`);
 const dot = document.getElementById('ws-dot');
+const proto = location.protocol === 'https:' ? 'wss' : 'ws';
+let ws, polling = false;
 
-ws.onopen = () => dot.classList.add('connected');
-ws.onclose = () => dot.classList.remove('connected');
+function send(obj){
+  if(ws && ws.readyState===1){ ws.send(JSON.stringify(obj)); }
+  else{ fetch('/api/action',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(obj)}); }
+}
 
-ws.onmessage = e => {
-  const msg = JSON.parse(e.data);
-  if(msg.type === 'state') { state = msg.state; updateUI(); }
-};
+function connectWS(){
+  try{
+    ws = new WebSocket(`${proto}://${location.host}`);
+    ws.onopen = () => { dot.classList.add('connected'); polling=false; };
+    ws.onclose = () => { dot.classList.remove('connected'); if(!polling) setTimeout(connectWS,3000); };
+    ws.onerror = () => startPolling();
+    ws.onmessage = e => { const msg=JSON.parse(e.data); if(msg.type==='state'){state=msg.state;updateUI();} };
+  }catch(e){ startPolling(); }
+}
 
-function send(obj){ if(ws.readyState===1) ws.send(JSON.stringify(obj)); }
+function startPolling(){
+  if(polling) return;
+  polling=true;
+  dot.style.background='#ffa502';
+  setInterval(async()=>{ try{ const r=await fetch('/api/state'); state=await r.json(); updateUI(); }catch(e){} },1000);
+}
+
+connectWS();
 
 function sendCustom(){
   const txt = document.getElementById('f-custom').value.trim();
