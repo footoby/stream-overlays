@@ -1,0 +1,1412 @@
+{
+  "1": {
+    "id": 1,
+    "name": "1. FC Köln",
+    "shortName": "1. FC Köln",
+    "country": "Germany",
+    "color": "#6366f1",
+    "logo": "/logos/1.png",
+    "competitions": [
+      "Bundesliga"
+    ]
+  },
+  "2": {
+    "id": 2,
+    "name": "TSG 1899 Hoffenheim",
+    "shortName": "Hoffenheim",
+    "country": "Germany",
+    "color": "#6366f1",
+    "logo": "/logos/2.png",
+    "competitions": [
+      "Bundesliga"
+    ]
+  },
+  "3": {
+    "id": 3,
+    "name": "Bayer 04 Leverkusen",
+    "shortName": "Leverkusen",
+    "country": "Germany",
+    "color": "#6366f1",
+    "logo": "/logos/3.png",
+    "competitions": [
+      "Bundesliga",
+      "Champions League"
+    ]
+  },
+  "4": {
+    "id": 4,
+    "name": "Borussia Dortmund",
+    "shortName": "Dortmund",
+    "country": "Germany",
+    "color": "#6366f1",
+    "logo": "/logos/4.png",
+    "competitions": [
+      "Bundesliga",
+      "Champions League"
+    ]
+  },
+  "5": {
+    "id": 5,
+    "name": "FC Bayern München",
+    "shortName": "Bayern",
+    "country": "Germany",
+    "color": "#6366f1",
+    "logo": "/logos/5.png",
+    "competitions": [
+      "Bundesliga",
+      "Champions League"
+    ]
+  },
+  "7": {
+    "id": 7,
+    "name": "Hamburger SV",
+    "shortName": "HSV",
+    "country": "Germany",
+    "color": "#6366f1",
+    "logo": "/logos/7.png",
+    "competitions": [
+      "Bundesliga"
+    ]
+  },
+  "10": {
+    "id": 10,
+    "name": "VfB Stuttgart",
+    "shortName": "Stuttgart",
+    "country": "Germany",
+    "color": "#6366f1",
+    "logo": "/logos/10.png",
+    "competitions": [
+      "Bundesliga"
+    ]
+  },
+  "11": {
+    "id": 11,
+    "name": "VfL Wolfsburg",
+    "shortName": "Wolfsburg",
+    "country": "Germany",
+    "color": "#6366f1",
+    "logo": "/logos/11.png",
+    "competitions": [
+      "Bundesliga"
+    ]
+  },
+  "12": {
+    "id": 12,
+    "name": "SV Werder Bremen",
+    "shortName": "Bremen",
+    "country": "Germany",
+    "color": "#6366f1",
+    "logo": "/logos/12.png",
+    "competitions": [
+      "Bundesliga"
+    ]
+  },
+  "15": {
+    "id": 15,
+    "name": "1. FSV Mainz 05",
+    "shortName": "Mainz",
+    "country": "Germany",
+    "color": "#6366f1",
+    "logo": "/logos/15.png",
+    "competitions": [
+      "Bundesliga"
+    ]
+  },
+  "16": {
+    "id": 16,
+    "name": "FC Augsburg",
+    "shortName": "Augsburg",
+    "country": "Germany",
+    "color": "#6366f1",
+    "logo": "/logos/16.png",
+    "competitions": [
+      "Bundesliga"
+    ]
+  },
+  "17": {
+    "id": 17,
+    "name": "SC Freiburg",
+    "shortName": "Freiburg",
+    "country": "Germany",
+    "color": "#6366f1",
+    "logo": "/logos/17.png",
+    "competitions": [
+      "Bundesliga"
+    ]
+  },
+  "18": {
+    "id": 18,
+    "name": "Borussia Mönchengladbach",
+    "shortName": "M'gladbach",
+    "country": "Germany",
+    "color": "#6366f1",
+    "logo": "/logos/18.png",
+    "competitions": [
+      "Bundesliga"
+    ]
+  },
+  "19": {
+    "id": 19,
+    "name": "Eintracht Frankfurt",
+    "shortName": "Frankfurt",
+    "country": "Germany",
+    "color": "#6366f1",
+    "logo": "/logos/19.png",
+    "competitions": [
+      "Bundesliga",
+      "Champions League"
+    ]
+  },
+  "20": {
+    "id": 20,
+    "name": "FC St. Pauli 1910",
+    "shortName": "St. Pauli",
+    "country": "Germany",
+    "color": "#6366f1",
+    "logo": "/logos/20.png",
+    "competitions": [
+      "Bundesliga"
+    ]
+  },
+  "28": {
+    "id": 28,
+    "name": "1. FC Union Berlin",
+    "shortName": "Union Berlin",
+    "country": "Germany",
+    "color": "#6366f1",
+    "logo": "/logos/28.png",
+    "competitions": [
+      "Bundesliga"
+    ]
+  },
+  "44": {
+    "id": 44,
+    "name": "1. FC Heidenheim 1846",
+    "shortName": "Heidenheim",
+    "country": "Germany",
+    "color": "#6366f1",
+    "logo": "/logos/44.png",
+    "competitions": [
+      "Bundesliga"
+    ]
+  },
+  "57": {
+    "id": 57,
+    "name": "Arsenal FC",
+    "shortName": "Arsenal",
+    "country": "England",
+    "color": "#6366f1",
+    "logo": "/logos/57.png",
+    "competitions": [
+      "Premier League",
+      "Champions League"
+    ]
+  },
+  "58": {
+    "id": 58,
+    "name": "Aston Villa FC",
+    "shortName": "Aston Villa",
+    "country": "England",
+    "color": "#6366f1",
+    "logo": "/logos/58.png",
+    "competitions": [
+      "Premier League"
+    ]
+  },
+  "61": {
+    "id": 61,
+    "name": "Chelsea FC",
+    "shortName": "Chelsea",
+    "country": "England",
+    "color": "#6366f1",
+    "logo": "/logos/61.png",
+    "competitions": [
+      "Premier League",
+      "Champions League"
+    ]
+  },
+  "62": {
+    "id": 62,
+    "name": "Everton FC",
+    "shortName": "Everton",
+    "country": "England",
+    "color": "#6366f1",
+    "logo": "/logos/62.png",
+    "competitions": [
+      "Premier League"
+    ]
+  },
+  "63": {
+    "id": 63,
+    "name": "Fulham FC",
+    "shortName": "Fulham",
+    "country": "England",
+    "color": "#6366f1",
+    "logo": "/logos/63.png",
+    "competitions": [
+      "Premier League"
+    ]
+  },
+  "64": {
+    "id": 64,
+    "name": "Liverpool FC",
+    "shortName": "Liverpool",
+    "country": "England",
+    "color": "#6366f1",
+    "logo": "/logos/64.png",
+    "competitions": [
+      "Premier League",
+      "Champions League"
+    ]
+  },
+  "65": {
+    "id": 65,
+    "name": "Manchester City FC",
+    "shortName": "Man City",
+    "country": "England",
+    "color": "#6366f1",
+    "logo": "/logos/65.png",
+    "competitions": [
+      "Premier League",
+      "Champions League"
+    ]
+  },
+  "66": {
+    "id": 66,
+    "name": "Manchester United FC",
+    "shortName": "Man United",
+    "country": "England",
+    "color": "#6366f1",
+    "logo": "/logos/66.png",
+    "competitions": [
+      "Premier League"
+    ]
+  },
+  "67": {
+    "id": 67,
+    "name": "Newcastle United FC",
+    "shortName": "Newcastle",
+    "country": "England",
+    "color": "#6366f1",
+    "logo": "/logos/67.png",
+    "competitions": [
+      "Premier League",
+      "Champions League"
+    ]
+  },
+  "71": {
+    "id": 71,
+    "name": "Sunderland AFC",
+    "shortName": "Sunderland",
+    "country": "England",
+    "color": "#6366f1",
+    "logo": "/logos/71.png",
+    "competitions": [
+      "Premier League"
+    ]
+  },
+  "73": {
+    "id": 73,
+    "name": "Tottenham Hotspur FC",
+    "shortName": "Tottenham",
+    "country": "England",
+    "color": "#6366f1",
+    "logo": "/logos/73.png",
+    "competitions": [
+      "Premier League",
+      "Champions League"
+    ]
+  },
+  "76": {
+    "id": 76,
+    "name": "Wolverhampton Wanderers FC",
+    "shortName": "Wolverhampton",
+    "country": "England",
+    "color": "#6366f1",
+    "logo": "/logos/76.png",
+    "competitions": [
+      "Premier League"
+    ]
+  },
+  "77": {
+    "id": 77,
+    "name": "Athletic Club",
+    "shortName": "Athletic",
+    "country": "Spain",
+    "color": "#6366f1",
+    "logo": "/logos/77.png",
+    "competitions": [
+      "La Liga",
+      "Champions League"
+    ]
+  },
+  "78": {
+    "id": 78,
+    "name": "Club Atlético de Madrid",
+    "shortName": "Atleti",
+    "country": "Spain",
+    "color": "#6366f1",
+    "logo": "/logos/78.png",
+    "competitions": [
+      "La Liga",
+      "Champions League"
+    ]
+  },
+  "79": {
+    "id": 79,
+    "name": "CA Osasuna",
+    "shortName": "Osasuna",
+    "country": "Spain",
+    "color": "#6366f1",
+    "logo": "/logos/79.png",
+    "competitions": [
+      "La Liga"
+    ]
+  },
+  "80": {
+    "id": 80,
+    "name": "RCD Espanyol de Barcelona",
+    "shortName": "Espanyol",
+    "country": "Spain",
+    "color": "#6366f1",
+    "logo": "/logos/80.png",
+    "competitions": [
+      "La Liga"
+    ]
+  },
+  "81": {
+    "id": 81,
+    "name": "FC Barcelona",
+    "shortName": "Barça",
+    "country": "Spain",
+    "color": "#6366f1",
+    "logo": "/logos/81.png",
+    "competitions": [
+      "La Liga",
+      "Champions League"
+    ]
+  },
+  "82": {
+    "id": 82,
+    "name": "Getafe CF",
+    "shortName": "Getafe",
+    "country": "Spain",
+    "color": "#6366f1",
+    "logo": "/logos/82.png",
+    "competitions": [
+      "La Liga"
+    ]
+  },
+  "86": {
+    "id": 86,
+    "name": "Real Madrid CF",
+    "shortName": "Real Madrid",
+    "country": "Spain",
+    "color": "#6366f1",
+    "logo": "/logos/86.png",
+    "competitions": [
+      "La Liga",
+      "Champions League"
+    ]
+  },
+  "87": {
+    "id": 87,
+    "name": "Rayo Vallecano de Madrid",
+    "shortName": "Rayo Vallecano",
+    "country": "Spain",
+    "color": "#6366f1",
+    "logo": "/logos/87.png",
+    "competitions": [
+      "La Liga"
+    ]
+  },
+  "88": {
+    "id": 88,
+    "name": "Levante UD",
+    "shortName": "Levante",
+    "country": "Spain",
+    "color": "#6366f1",
+    "logo": "/logos/88.png",
+    "competitions": [
+      "La Liga"
+    ]
+  },
+  "89": {
+    "id": 89,
+    "name": "RCD Mallorca",
+    "shortName": "Mallorca",
+    "country": "Spain",
+    "color": "#6366f1",
+    "logo": "/logos/89.png",
+    "competitions": [
+      "La Liga"
+    ]
+  },
+  "90": {
+    "id": 90,
+    "name": "Real Betis Balompié",
+    "shortName": "Real Betis",
+    "country": "Spain",
+    "color": "#6366f1",
+    "logo": "/logos/90.png",
+    "competitions": [
+      "La Liga"
+    ]
+  },
+  "92": {
+    "id": 92,
+    "name": "Real Sociedad de Fútbol",
+    "shortName": "Real Sociedad",
+    "country": "Spain",
+    "color": "#6366f1",
+    "logo": "/logos/92.png",
+    "competitions": [
+      "La Liga"
+    ]
+  },
+  "94": {
+    "id": 94,
+    "name": "Villarreal CF",
+    "shortName": "Villarreal",
+    "country": "Spain",
+    "color": "#6366f1",
+    "logo": "/logos/94.png",
+    "competitions": [
+      "La Liga",
+      "Champions League"
+    ]
+  },
+  "95": {
+    "id": 95,
+    "name": "Valencia CF",
+    "shortName": "Valencia",
+    "country": "Spain",
+    "color": "#6366f1",
+    "logo": "/logos/95.png",
+    "competitions": [
+      "La Liga"
+    ]
+  },
+  "98": {
+    "id": 98,
+    "name": "AC Milan",
+    "shortName": "Milan",
+    "country": "Italy",
+    "color": "#6366f1",
+    "logo": "/logos/98.png",
+    "competitions": [
+      "Serie A"
+    ]
+  },
+  "99": {
+    "id": 99,
+    "name": "ACF Fiorentina",
+    "shortName": "Fiorentina",
+    "country": "Italy",
+    "color": "#6366f1",
+    "logo": "/logos/99.png",
+    "competitions": [
+      "Serie A"
+    ]
+  },
+  "100": {
+    "id": 100,
+    "name": "AS Roma",
+    "shortName": "Roma",
+    "country": "Italy",
+    "color": "#6366f1",
+    "logo": "/logos/100.png",
+    "competitions": [
+      "Serie A"
+    ]
+  },
+  "102": {
+    "id": 102,
+    "name": "Atalanta BC",
+    "shortName": "Atalanta",
+    "country": "Italy",
+    "color": "#6366f1",
+    "logo": "/logos/102.png",
+    "competitions": [
+      "Serie A",
+      "Champions League"
+    ]
+  },
+  "103": {
+    "id": 103,
+    "name": "Bologna FC 1909",
+    "shortName": "Bologna",
+    "country": "Italy",
+    "color": "#6366f1",
+    "logo": "/logos/103.png",
+    "competitions": [
+      "Serie A"
+    ]
+  },
+  "104": {
+    "id": 104,
+    "name": "Cagliari Calcio",
+    "shortName": "Cagliari",
+    "country": "Italy",
+    "color": "#6366f1",
+    "logo": "/logos/104.png",
+    "competitions": [
+      "Serie A"
+    ]
+  },
+  "107": {
+    "id": 107,
+    "name": "Genoa CFC",
+    "shortName": "Genoa",
+    "country": "Italy",
+    "color": "#6366f1",
+    "logo": "/logos/107.png",
+    "competitions": [
+      "Serie A"
+    ]
+  },
+  "108": {
+    "id": 108,
+    "name": "FC Internazionale Milano",
+    "shortName": "Inter",
+    "country": "Italy",
+    "color": "#6366f1",
+    "logo": "/logos/108.png",
+    "competitions": [
+      "Serie A",
+      "Champions League"
+    ]
+  },
+  "109": {
+    "id": 109,
+    "name": "Juventus FC",
+    "shortName": "Juventus",
+    "country": "Italy",
+    "color": "#6366f1",
+    "logo": "/logos/109.png",
+    "competitions": [
+      "Serie A",
+      "Champions League"
+    ]
+  },
+  "110": {
+    "id": 110,
+    "name": "SS Lazio",
+    "shortName": "Lazio",
+    "country": "Italy",
+    "color": "#6366f1",
+    "logo": "/logos/110.png",
+    "competitions": [
+      "Serie A"
+    ]
+  },
+  "112": {
+    "id": 112,
+    "name": "Parma Calcio 1913",
+    "shortName": "Parma",
+    "country": "Italy",
+    "color": "#6366f1",
+    "logo": "/logos/112.png",
+    "competitions": [
+      "Serie A"
+    ]
+  },
+  "113": {
+    "id": 113,
+    "name": "SSC Napoli",
+    "shortName": "Napoli",
+    "country": "Italy",
+    "color": "#6366f1",
+    "logo": "/logos/113.png",
+    "competitions": [
+      "Serie A",
+      "Champions League"
+    ]
+  },
+  "115": {
+    "id": 115,
+    "name": "Udinese Calcio",
+    "shortName": "Udinese",
+    "country": "Italy",
+    "color": "#6366f1",
+    "logo": "/logos/115.png",
+    "competitions": [
+      "Serie A"
+    ]
+  },
+  "263": {
+    "id": 263,
+    "name": "Deportivo Alavés",
+    "shortName": "Alavés",
+    "country": "Spain",
+    "color": "#6366f1",
+    "logo": "/logos/263.png",
+    "competitions": [
+      "La Liga"
+    ]
+  },
+  "285": {
+    "id": 285,
+    "name": "Elche CF",
+    "shortName": "Elche",
+    "country": "Spain",
+    "color": "#6366f1",
+    "logo": "/logos/285.png",
+    "competitions": [
+      "La Liga"
+    ]
+  },
+  "298": {
+    "id": 298,
+    "name": "Girona FC",
+    "shortName": "Girona",
+    "country": "Spain",
+    "color": "#6366f1",
+    "logo": "/logos/298.png",
+    "competitions": [
+      "La Liga"
+    ]
+  },
+  "328": {
+    "id": 328,
+    "name": "Burnley FC",
+    "shortName": "Burnley",
+    "country": "England",
+    "color": "#6366f1",
+    "logo": "/logos/328.png",
+    "competitions": [
+      "Premier League"
+    ]
+  },
+  "341": {
+    "id": 341,
+    "name": "Leeds United FC",
+    "shortName": "Leeds United",
+    "country": "England",
+    "color": "#6366f1",
+    "logo": "/logos/341.png",
+    "competitions": [
+      "Premier League"
+    ]
+  },
+  "351": {
+    "id": 351,
+    "name": "Nottingham Forest FC",
+    "shortName": "Nottingham",
+    "country": "England",
+    "color": "#6366f1",
+    "logo": "/logos/351.png",
+    "competitions": [
+      "Premier League"
+    ]
+  },
+  "354": {
+    "id": 354,
+    "name": "Crystal Palace FC",
+    "shortName": "Crystal Palace",
+    "country": "England",
+    "color": "#6366f1",
+    "logo": "/logos/354.png",
+    "competitions": [
+      "Premier League"
+    ]
+  },
+  "397": {
+    "id": 397,
+    "name": "Brighton & Hove Albion FC",
+    "shortName": "Brighton Hove",
+    "country": "England",
+    "color": "#6366f1",
+    "logo": "/logos/397.png",
+    "competitions": [
+      "Premier League"
+    ]
+  },
+  "402": {
+    "id": 402,
+    "name": "Brentford FC",
+    "shortName": "Brentford",
+    "country": "England",
+    "color": "#6366f1",
+    "logo": "/logos/402.png",
+    "competitions": [
+      "Premier League"
+    ]
+  },
+  "450": {
+    "id": 450,
+    "name": "Hellas Verona FC",
+    "shortName": "Verona",
+    "country": "Italy",
+    "color": "#6366f1",
+    "logo": "/logos/450.png",
+    "competitions": [
+      "Serie A"
+    ]
+  },
+  "457": {
+    "id": 457,
+    "name": "US Cremonese",
+    "shortName": "Cremonese",
+    "country": "Italy",
+    "color": "#6366f1",
+    "logo": "/logos/457.png",
+    "competitions": [
+      "Serie A"
+    ]
+  },
+  "471": {
+    "id": 471,
+    "name": "US Sassuolo Calcio",
+    "shortName": "Sassuolo",
+    "country": "Italy",
+    "color": "#6366f1",
+    "logo": "/logos/471.png",
+    "competitions": [
+      "Serie A"
+    ]
+  },
+  "487": {
+    "id": 487,
+    "name": "AC Pisa 1909",
+    "shortName": "AC Pisa",
+    "country": "Italy",
+    "color": "#6366f1",
+    "logo": "/logos/487.png",
+    "competitions": [
+      "Serie A"
+    ]
+  },
+  "496": {
+    "id": 496,
+    "name": "Rio Ave FC",
+    "shortName": "Rio Ave",
+    "country": "Portugal",
+    "color": "#6366f1",
+    "logo": "/logos/496.png",
+    "competitions": [
+      "Liga Portugal"
+    ]
+  },
+  "498": {
+    "id": 498,
+    "name": "Sporting Clube de Portugal",
+    "shortName": "Sporting CP",
+    "country": "Portugal",
+    "color": "#6366f1",
+    "logo": "/logos/498.png",
+    "competitions": [
+      "Champions League",
+      "Liga Portugal"
+    ]
+  },
+  "503": {
+    "id": 503,
+    "name": "FC Porto",
+    "shortName": "Porto",
+    "country": "Portugal",
+    "color": "#6366f1",
+    "logo": "/logos/503.png",
+    "competitions": [
+      "Liga Portugal"
+    ]
+  },
+  "511": {
+    "id": 511,
+    "name": "Toulouse FC",
+    "shortName": "Toulouse",
+    "country": "France",
+    "color": "#6366f1",
+    "logo": "/logos/511.png",
+    "competitions": [
+      "Ligue 1"
+    ]
+  },
+  "512": {
+    "id": 512,
+    "name": "Stade Brestois 29",
+    "shortName": "Brest",
+    "country": "France",
+    "color": "#6366f1",
+    "logo": "/logos/512.png",
+    "competitions": [
+      "Ligue 1"
+    ]
+  },
+  "516": {
+    "id": 516,
+    "name": "Olympique de Marseille",
+    "shortName": "Marseille",
+    "country": "France",
+    "color": "#6366f1",
+    "logo": "/logos/516.png",
+    "competitions": [
+      "Ligue 1",
+      "Champions League"
+    ]
+  },
+  "519": {
+    "id": 519,
+    "name": "AJ Auxerre",
+    "shortName": "Auxerre",
+    "country": "France",
+    "color": "#6366f1",
+    "logo": "/logos/519.png",
+    "competitions": [
+      "Ligue 1"
+    ]
+  },
+  "521": {
+    "id": 521,
+    "name": "Lille OSC",
+    "shortName": "Lille",
+    "country": "France",
+    "color": "#6366f1",
+    "logo": "/logos/521.png",
+    "competitions": [
+      "Ligue 1"
+    ]
+  },
+  "522": {
+    "id": 522,
+    "name": "OGC Nice",
+    "shortName": "Nice",
+    "country": "France",
+    "color": "#6366f1",
+    "logo": "/logos/522.png",
+    "competitions": [
+      "Ligue 1"
+    ]
+  },
+  "523": {
+    "id": 523,
+    "name": "Olympique Lyonnais",
+    "shortName": "Olympique Lyon",
+    "country": "France",
+    "color": "#6366f1",
+    "logo": "/logos/523.png",
+    "competitions": [
+      "Ligue 1"
+    ]
+  },
+  "524": {
+    "id": 524,
+    "name": "Paris Saint-Germain FC",
+    "shortName": "PSG",
+    "country": "France",
+    "color": "#6366f1",
+    "logo": "/logos/524.png",
+    "competitions": [
+      "Ligue 1",
+      "Champions League"
+    ]
+  },
+  "525": {
+    "id": 525,
+    "name": "FC Lorient",
+    "shortName": "Lorient",
+    "country": "France",
+    "color": "#6366f1",
+    "logo": "/logos/525.png",
+    "competitions": [
+      "Ligue 1"
+    ]
+  },
+  "529": {
+    "id": 529,
+    "name": "Stade Rennais FC 1901",
+    "shortName": "Stade Rennais",
+    "country": "France",
+    "color": "#6366f1",
+    "logo": "/logos/529.png",
+    "competitions": [
+      "Ligue 1"
+    ]
+  },
+  "532": {
+    "id": 532,
+    "name": "Angers SCO",
+    "shortName": "Angers SCO",
+    "country": "France",
+    "color": "#6366f1",
+    "logo": "/logos/532.png",
+    "competitions": [
+      "Ligue 1"
+    ]
+  },
+  "533": {
+    "id": 533,
+    "name": "Le Havre AC",
+    "shortName": "Le Havre",
+    "country": "France",
+    "color": "#6366f1",
+    "logo": "/logos/533.png",
+    "competitions": [
+      "Ligue 1"
+    ]
+  },
+  "543": {
+    "id": 543,
+    "name": "FC Nantes",
+    "shortName": "Nantes",
+    "country": "France",
+    "color": "#6366f1",
+    "logo": "/logos/543.png",
+    "competitions": [
+      "Ligue 1"
+    ]
+  },
+  "545": {
+    "id": 545,
+    "name": "FC Metz",
+    "shortName": "FC Metz",
+    "country": "France",
+    "color": "#6366f1",
+    "logo": "/logos/545.png",
+    "competitions": [
+      "Ligue 1"
+    ]
+  },
+  "546": {
+    "id": 546,
+    "name": "Racing Club de Lens",
+    "shortName": "RC Lens",
+    "country": "France",
+    "color": "#6366f1",
+    "logo": "/logos/546.png",
+    "competitions": [
+      "Ligue 1"
+    ]
+  },
+  "548": {
+    "id": 548,
+    "name": "AS Monaco FC",
+    "shortName": "Monaco",
+    "country": "Monaco",
+    "color": "#6366f1",
+    "logo": "/logos/548.png",
+    "competitions": [
+      "Ligue 1",
+      "Champions League"
+    ]
+  },
+  "558": {
+    "id": 558,
+    "name": "RC Celta de Vigo",
+    "shortName": "Celta",
+    "country": "Spain",
+    "color": "#6366f1",
+    "logo": "/logos/558.png",
+    "competitions": [
+      "La Liga"
+    ]
+  },
+  "559": {
+    "id": 559,
+    "name": "Sevilla FC",
+    "shortName": "Sevilla FC",
+    "country": "Spain",
+    "color": "#6366f1",
+    "logo": "/logos/559.png",
+    "competitions": [
+      "La Liga"
+    ]
+  },
+  "563": {
+    "id": 563,
+    "name": "West Ham United FC",
+    "shortName": "West Ham",
+    "country": "England",
+    "color": "#6366f1",
+    "logo": "/logos/563.png",
+    "competitions": [
+      "Premier League"
+    ]
+  },
+  "576": {
+    "id": 576,
+    "name": "RC Strasbourg Alsace",
+    "shortName": "Strasbourg",
+    "country": "France",
+    "color": "#6366f1",
+    "logo": "/logos/576.png",
+    "competitions": [
+      "Ligue 1"
+    ]
+  },
+  "582": {
+    "id": 582,
+    "name": "GD Estoril Praia",
+    "shortName": "Estoril Praia",
+    "country": "Portugal",
+    "color": "#6366f1",
+    "logo": "/logos/582.png",
+    "competitions": [
+      "Liga Portugal"
+    ]
+  },
+  "583": {
+    "id": 583,
+    "name": "Moreirense FC",
+    "shortName": "Moreirense",
+    "country": "Portugal",
+    "color": "#6366f1",
+    "logo": "/logos/583.png",
+    "competitions": [
+      "Liga Portugal"
+    ]
+  },
+  "586": {
+    "id": 586,
+    "name": "Torino FC",
+    "shortName": "Torino",
+    "country": "Italy",
+    "color": "#6366f1",
+    "logo": "/logos/586.png",
+    "competitions": [
+      "Serie A"
+    ]
+  },
+  "610": {
+    "id": 610,
+    "name": "Galatasaray SK",
+    "shortName": "Galatasaray",
+    "country": "Turkey",
+    "color": "#6366f1",
+    "logo": "/logos/610.png",
+    "competitions": [
+      "Champions League"
+    ]
+  },
+  "611": {
+    "id": 611,
+    "name": "Qarabağ Ağdam FK",
+    "shortName": "Qarabağ Ağdam",
+    "country": "Azerbaijan",
+    "color": "#6366f1",
+    "logo": "/logos/611.png",
+    "competitions": [
+      "Champions League"
+    ]
+  },
+  "654": {
+    "id": 654,
+    "name": "PAE Olympiakos SFP",
+    "shortName": "Olympiakos",
+    "country": "Greece",
+    "color": "#6366f1",
+    "logo": "/logos/654.png",
+    "competitions": [
+      "Champions League"
+    ]
+  },
+  "674": {
+    "id": 674,
+    "name": "PSV",
+    "shortName": "PSV",
+    "country": "Netherlands",
+    "color": "#6366f1",
+    "logo": "/logos/674.png",
+    "competitions": [
+      "Champions League"
+    ]
+  },
+  "678": {
+    "id": 678,
+    "name": "AFC Ajax",
+    "shortName": "Ajax",
+    "country": "Netherlands",
+    "color": "#6366f1",
+    "logo": "/logos/678.png",
+    "competitions": [
+      "Champions League"
+    ]
+  },
+  "712": {
+    "id": 712,
+    "name": "FC Arouca",
+    "shortName": "Arouca",
+    "country": "Portugal",
+    "color": "#6366f1",
+    "logo": "/logos/712.png",
+    "competitions": [
+      "Liga Portugal"
+    ]
+  },
+  "721": {
+    "id": 721,
+    "name": "RB Leipzig",
+    "shortName": "RB Leipzig",
+    "country": "Germany",
+    "color": "#6366f1",
+    "logo": "/logos/721.png",
+    "competitions": [
+      "Bundesliga"
+    ]
+  },
+  "851": {
+    "id": 851,
+    "name": "Club Brugge KV",
+    "shortName": "Club Brugge",
+    "country": "Belgium",
+    "color": "#6366f1",
+    "logo": "/logos/851.png",
+    "competitions": [
+      "Champions League"
+    ]
+  },
+  "930": {
+    "id": 930,
+    "name": "SK Slavia Praha",
+    "shortName": "Slavia Praha",
+    "country": "Czech Republic",
+    "color": "#6366f1",
+    "logo": "/logos/930.png",
+    "competitions": [
+      "Champions League"
+    ]
+  },
+  "1044": {
+    "id": 1044,
+    "name": "AFC Bournemouth",
+    "shortName": "Bournemouth",
+    "country": "England",
+    "color": "#6366f1",
+    "logo": "/logos/1044.png",
+    "competitions": [
+      "Premier League"
+    ]
+  },
+  "1045": {
+    "id": 1045,
+    "name": "Paris FC",
+    "shortName": "Paris FC",
+    "country": "France",
+    "color": "#6366f1",
+    "logo": "/logos/1045.png",
+    "competitions": [
+      "Ligue 1"
+    ]
+  },
+  "1048": {
+    "id": 1048,
+    "name": "Real Oviedo",
+    "shortName": "Real Oviedo",
+    "country": "Spain",
+    "color": "#6366f1",
+    "logo": "/logos/1048.png",
+    "competitions": [
+      "La Liga"
+    ]
+  },
+  "1049": {
+    "id": 1049,
+    "name": "CD Tondela",
+    "shortName": "Tondela",
+    "country": "Portugal",
+    "color": "#6366f1",
+    "logo": "/logos/1049.png",
+    "competitions": [
+      "Liga Portugal"
+    ]
+  },
+  "1876": {
+    "id": 1876,
+    "name": "FC København",
+    "shortName": "København",
+    "country": "Denmark",
+    "color": "#6366f1",
+    "logo": "/logos/1876.png",
+    "competitions": [
+      "Champions League"
+    ]
+  },
+  "1903": {
+    "id": 1903,
+    "name": "Sport Lisboa e Benfica",
+    "shortName": "SL Benfica",
+    "country": "Portugal",
+    "color": "#6366f1",
+    "logo": "/logos/1903.png",
+    "competitions": [
+      "Champions League",
+      "Liga Portugal"
+    ]
+  },
+  "3929": {
+    "id": 3929,
+    "name": "Royale Union Saint-Gilloise",
+    "shortName": "Union SG",
+    "country": "Belgium",
+    "color": "#6366f1",
+    "logo": "/logos/3929.png",
+    "competitions": [
+      "Champions League"
+    ]
+  },
+  "5529": {
+    "id": 5529,
+    "name": "CD Nacional",
+    "shortName": "CD Nacional",
+    "country": "Portugal",
+    "color": "#6366f1",
+    "logo": "/logos/5529.png",
+    "competitions": [
+      "Liga Portugal"
+    ]
+  },
+  "5530": {
+    "id": 5530,
+    "name": "CD Santa Clara",
+    "shortName": "Santa Clara",
+    "country": "Portugal",
+    "color": "#6366f1",
+    "logo": "/logos/5530.png",
+    "competitions": [
+      "Liga Portugal"
+    ]
+  },
+  "5531": {
+    "id": 5531,
+    "name": "FC Famalicão",
+    "shortName": "Famalicão",
+    "country": "Portugal",
+    "color": "#6366f1",
+    "logo": "/logos/5531.png",
+    "competitions": [
+      "Liga Portugal"
+    ]
+  },
+  "5533": {
+    "id": 5533,
+    "name": "Gil Vicente FC",
+    "shortName": "Gil Vicente",
+    "country": "Portugal",
+    "color": "#6366f1",
+    "logo": "/logos/5533.png",
+    "competitions": [
+      "Liga Portugal"
+    ]
+  },
+  "5543": {
+    "id": 5543,
+    "name": "Vitória SC",
+    "shortName": "Vitória SC",
+    "country": "Portugal",
+    "color": "#6366f1",
+    "logo": "/logos/5543.png",
+    "competitions": [
+      "Liga Portugal"
+    ]
+  },
+  "5613": {
+    "id": 5613,
+    "name": "Sporting Clube de Braga",
+    "shortName": "Braga",
+    "country": "Portugal",
+    "color": "#6366f1",
+    "logo": "/logos/5613.png",
+    "competitions": [
+      "Liga Portugal"
+    ]
+  },
+  "5721": {
+    "id": 5721,
+    "name": "FK Bodø/Glimt",
+    "shortName": "Bodø/Glimt",
+    "country": "Norway",
+    "color": "#6366f1",
+    "logo": "/logos/5721.png",
+    "competitions": [
+      "Champions League"
+    ]
+  },
+  "5890": {
+    "id": 5890,
+    "name": "US Lecce",
+    "shortName": "Lecce",
+    "country": "Italy",
+    "color": "#6366f1",
+    "logo": "/logos/5890.png",
+    "competitions": [
+      "Serie A"
+    ]
+  },
+  "6618": {
+    "id": 6618,
+    "name": "Casa Pia AC",
+    "shortName": "Casa Pia",
+    "country": "Portugal",
+    "color": "#6366f1",
+    "logo": "/logos/6618.png",
+    "competitions": [
+      "Liga Portugal"
+    ]
+  },
+  "7397": {
+    "id": 7397,
+    "name": "Como 1907",
+    "shortName": "Como 1907",
+    "country": "Italy",
+    "color": "#6366f1",
+    "logo": "/logos/7397.png",
+    "competitions": [
+      "Serie A"
+    ]
+  },
+  "7822": {
+    "id": 7822,
+    "name": "FC Alverca",
+    "shortName": "Alverca",
+    "country": "Portugal",
+    "color": "#6366f1",
+    "logo": "/logos/7822.png",
+    "competitions": [
+      "Liga Portugal"
+    ]
+  },
+  "9136": {
+    "id": 9136,
+    "name": "CF Estrela da Amadora",
+    "shortName": "Amadora",
+    "country": "Portugal",
+    "color": "#6366f1",
+    "logo": "/logos/9136.png",
+    "competitions": [
+      "Liga Portugal"
+    ]
+  },
+  "10340": {
+    "id": 10340,
+    "name": "AVS",
+    "shortName": "AVS",
+    "country": "Portugal",
+    "color": "#6366f1",
+    "logo": "/logos/10340.png",
+    "competitions": [
+      "Liga Portugal"
+    ]
+  },
+  "10601": {
+    "id": 10601,
+    "name": "FK Kairat",
+    "shortName": "FK Kairat",
+    "country": "Kazakhstan",
+    "color": "#6366f1",
+    "logo": "/logos/10601.png",
+    "competitions": [
+      "Champions League"
+    ]
+  },
+  "11034": {
+    "id": 11034,
+    "name": "Paphos FC",
+    "shortName": "Paphos FC",
+    "country": "Cyprus",
+    "color": "#6366f1",
+    "logo": "/logos/11034.png",
+    "competitions": [
+      "Champions League"
+    ]
+  }
+}

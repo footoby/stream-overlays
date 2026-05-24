@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Admin — Stream Overlays</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg1:#0a0c12;--bg2:#13161f;--bg3:#1c202e;--bg4:#252a3a;--text1:#ffffff;--text2:#a0aec0;--text3:#4a5568;--border:#1e2436;--border2:#2d3550;--green:#00d084;--red:#ff4757;--amber:#ffa502;--accent:#6366f1;--accent2:#818cf8}
+body{background:var(--bg1);font-family:'Segoe UI',system-ui,sans-serif;color:var(--text1);font-size:14px;margin:0;padding:0}
+.header{background:var(--bg2);border-bottom:1px solid var(--border);padding:12px 20px;display:flex;align-items:center;gap:10px}
+.header h1{font-size:16px;font-weight:700}
+.ws-dot{width:8px;height:8px;border-radius:50%;background:#ff4757;margin-left:auto}
+.ws-dot.connected{background:#00d084}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;padding:1rem}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1rem}
+.card-title{font-size:11px;font-weight:700;color:var(--text2);margin-bottom:12px;text-transform:uppercase;letter-spacing:.8px}
+.field{margin-bottom:10px}
+.field label{display:block;font-size:11px;color:var(--text3);margin-bottom:4px;font-weight:600;text-transform:uppercase;letter-spacing:.3px}
+.field input,.field select{width:100%;background:var(--bg3);border:1px solid var(--border2);border-radius:7px;color:var(--text1);font-size:13px;padding:8px 11px;outline:none;font-family:inherit}
+.field input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(99,102,241,.15)}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.btn{padding:8px 14px;border-radius:8px;border:none;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:5px;transition:.15s}
+.btn-primary{background:var(--accent);color:#fff}.btn-primary:hover{background:var(--accent2)}
+.btn-green{background:rgba(0,208,132,.12);color:var(--green);border:1px solid rgba(0,208,132,.25)}.btn-green:hover{background:rgba(0,208,132,.2)}
+.btn-red{background:rgba(255,71,87,.1);color:var(--red);border:1px solid rgba(255,71,87,.2)}.btn-red:hover{background:rgba(255,71,87,.2)}
+.btn-amber{background:rgba(255,165,2,.1);color:var(--amber);border:1px solid rgba(255,165,2,.2)}.btn-amber:hover{background:rgba(255,165,2,.2)}
+.btn-ghost{background:transparent;border:1px solid var(--border2);color:var(--text2)}.btn-ghost:hover{background:var(--bg3);color:var(--text1)}
+.btn-full{width:100%;justify-content:center;padding:10px}
+.sep{height:1px;background:var(--border);margin:10px 0}
+.search-wrap{position:relative}
+.search-input-row{display:flex;gap:6px}
+.search-results{position:absolute;top:calc(100% + 4px);left:0;right:0;background:var(--bg3);border:1px solid var(--border2);border-radius:8px;z-index:50;max-height:240px;overflow-y:auto;box-shadow:0 8px 24px rgba(0,0,0,.6);display:none}
+.s-item{display:flex;align-items:center;gap:10px;padding:9px 12px;cursor:pointer;border-bottom:1px solid rgba(255,255,255,.04);transition:.12s}
+.s-item:hover{background:rgba(99,102,241,.12)}
+.s-mini-logo{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.06);overflow:hidden;flex-shrink:0}
+.s-mini-logo img{width:100%;height:100%;object-fit:contain;padding:3px}
+.s-name{font-size:13px;color:var(--text1);font-weight:600}
+.s-sub{font-size:11px;color:var(--text3)}
+.prev-box{display:flex;align-items:center;gap:10px;background:var(--bg3);border:1px solid var(--border2);border-radius:9px;padding:9px 12px;margin-top:7px;min-height:56px}
+.prev-logo{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.06);overflow:hidden;flex-shrink:0}
+.prev-logo img{width:100%;height:100%;object-fit:contain;padding:3px}
+.prev-init{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0}
+.timer-controls{display:flex;gap:6px;margin-bottom:10px}
+.timer-controls .btn{flex:1;justify-content:center;padding:10px}
+.quick-row{display:flex;gap:6px;margin-bottom:6px}
+.quick-row .btn{flex:1;justify-content:center;font-size:11px}
+.ev-list{max-height:200px;overflow-y:auto;display:flex;flex-direction:column;gap:5px;margin-top:8px}
+.ev-item{display:flex;align-items:center;gap:7px;background:var(--bg3);border:1px solid var(--border);border-radius:7px;padding:7px 10px}
+.ev-txt{flex:1;font-size:12px}
+.btn-del{background:transparent;border:none;color:var(--text3);cursor:pointer;padding:3px;border-radius:4px;font-size:14px}
+.btn-del:hover{color:var(--red)}
+.color-row{display:flex;gap:5px;flex-wrap:wrap;margin-top:5px}
+.cdot{width:20px;height:20px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:.15s}
+.period-btns{display:flex;gap:5px;flex-wrap:wrap}
+.period-btns .btn{font-size:11px;padding:6px 10px}
+.empty-hint{text-align:center;padding:1rem;color:var(--text3);font-size:12px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.spinner{width:14px;height:14px;border:2px solid var(--border2);border-top-color:var(--accent2);border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0}
+</style>
+</head>
+<body>
+<div class="header">
+  <span>🎮</span>
+  <h1>Stream Overlays — Admin</h1>
+  <div class="ws-dot" id="ws-dot" title="WebSocket"></div>
+</div>
+
+<div class="grid">
+  <div>
+    <div class="card" style="margin-bottom:1rem">
+      <div class="card-title">🏟 Jogo</div>
+      <div class="field"><label>Competição</label><input type="text" id="f-comp" value="Liga Portugal" oninput="send({action:'setComp',value:this.value})"></div>
+      <div class="two-col">
+        <div>
+          <div class="field"><label>Equipa casa</label>
+            <div class="search-wrap">
+              <div class="search-input-row">
+                <input type="text" id="f-home" placeholder="ex: Benfica" autocomplete="off" oninput="onType('home')" onkeydown="if(event.key==='Enter')doSearch('home')">
+                <button class="btn btn-primary" onclick="doSearch('home')">🔍</button>
+              </div>
+              <div id="res-home" class="search-results"></div>
+            </div>
+          </div>
+          <div id="prev-home" class="prev-box">
+            <div class="prev-init" style="background:rgba(239,68,68,.12);color:#ef4444;border:1px solid rgba(239,68,68,.25)">?</div>
+            <span style="font-size:12px;color:var(--text3)">Pesquisa uma equipa</span>
+          </div>
+          <div style="margin-top:6px"><div style="font-size:10px;color:var(--text3);margin-bottom:3px;font-weight:600;text-transform:uppercase">Cor</div><div class="color-row" id="colors-home"></div></div>
+        </div>
+        <div>
+          <div class="field"><label>Equipa fora</label>
+            <div class="search-wrap">
+              <div class="search-input-row">
+                <input type="text" id="f-away" placeholder="ex: Porto" autocomplete="off" oninput="onType('away')" onkeydown="if(event.key==='Enter')doSearch('away')">
+                <button class="btn btn-primary" onclick="doSearch('away')">🔍</button>
+              </div>
+              <div id="res-away" class="search-results"></div>
+            </div>
+          </div>
+          <div id="prev-away" class="prev-box">
+            <div class="prev-init" style="background:rgba(99,102,241,.12);color:#6366f1;border:1px solid rgba(99,102,241,.25)">?</div>
+            <span style="font-size:12px;color:var(--text3)">Pesquisa uma equipa</span>
+          </div>
+          <div style="margin-top:6px"><div style="font-size:10px;color:var(--text3);margin-bottom:3px;font-weight:600;text-transform:uppercase">Cor</div><div class="color-row" id="colors-away"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⏱ Relógio</div>
+      <div class="timer-controls">
+        <button class="btn btn-green btn-full" onclick="send({action:'start'})">▶ Iniciar</button>
+        <button class="btn btn-amber btn-full" onclick="send({action:'pause'})">⏸ Pausa</button>
+        <button class="btn btn-ghost btn-full" onclick="send({action:'reset'})">↺ Reset</button>
+      </div>
+      <div style="display:flex;gap:7px;align-items:flex-end;margin-bottom:10px">
+        <div class="field" style="flex:1;margin-bottom:0"><label>Minuto manual</label><input type="number" id="f-min" min="0" max="120" placeholder="45" style="text-align:center"></div>
+        <button class="btn btn-ghost" onclick="send({action:'setMin',min:parseInt(document.getElementById('f-min').value)||0})">✓</button>
+      </div>
+      <div class="sep" style="margin:8px 0"></div>
+      <div class="period-btns">
+        <button class="btn btn-ghost" onclick="send({action:'setPeriod',period:'1H'})">1ª Parte</button>
+        <button class="btn btn-amber" onclick="send({action:'setPeriod',period:'HT'})">Intervalo</button>
+        <button class="btn btn-ghost" onclick="send({action:'setPeriod',period:'2H'})">2ª Parte</button>
+        <button class="btn btn-ghost" onclick="send({action:'setPeriod',period:'ET'})">Prol.</button>
+        <button class="btn btn-red" onclick="send({action:'setPeriod',period:'FT'})">Fim</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">⚡ Eventos rápidos</div>
+    <div style="font-size:10px;color:var(--text3);margin-bottom:4px;font-weight:600;text-transform:uppercase">⚽ Golo</div>
+    <div class="quick-row">
+      <button class="btn btn-green" onclick="send({action:'goal',side:'home'})">+ <span id="lh">Casa</span></button>
+      <button class="btn btn-green" onclick="send({action:'goal',side:'away'})">+ <span id="la">Fora</span></button>
+    </div>
+    <div style="font-size:10px;color:var(--text3);margin-bottom:4px;font-weight:600;text-transform:uppercase">↩ Anular</div>
+    <div class="quick-row">
+      <button class="btn btn-red" onclick="send({action:'undo',side:'home'})">− <span id="lhu">Casa</span></button>
+      <button class="btn btn-red" onclick="send({action:'undo',side:'away'})">− <span id="lau">Fora</span></button>
+    </div>
+    <div style="font-size:10px;color:var(--text3);margin-bottom:4px;font-weight:600;text-transform:uppercase">🟨 Cartão amarelo</div>
+    <div class="quick-row">
+      <button class="btn btn-amber" onclick="send({action:'yellow',side:'home'})">Casa</button>
+      <button class="btn btn-amber" onclick="send({action:'yellow',side:'away'})">Fora</button>
+    </div>
+    <div style="font-size:10px;color:var(--text3);margin-bottom:4px;font-weight:600;text-transform:uppercase">🟥 Cartão vermelho</div>
+    <div class="quick-row">
+      <button class="btn btn-red" onclick="send({action:'red',side:'home'})">Casa</button>
+      <button class="btn btn-red" onclick="send({action:'red',side:'away'})">Fora</button>
+    </div>
+    <div style="font-size:10px;color:var(--text3);margin-bottom:4px;font-weight:600;text-transform:uppercase">📝 Personalizado</div>
+    <div style="display:flex;gap:6px">
+      <input type="text" id="f-custom" placeholder="ex: Substituição — Rafa entra" style="flex:1;background:var(--bg3);border:1px solid var(--border2);border-radius:7px;color:var(--text1);font-size:12px;padding:7px 10px;outline:none;font-family:inherit">
+      <select id="f-ct" style="background:var(--bg3);border:1px solid var(--border2);border-radius:7px;color:var(--text1);font-size:12px;padding:7px;outline:none">
+        <option value="home">Casa</option><option value="away">Fora</option><option value="neutral">—</option>
+      </select>
+      <button class="btn btn-primary" onclick="sendCustom()">+</button>
+    </div>
+    <div class="sep"></div>
+    <div class="card-title">📋 Eventos — <span id="ev-count">0</span></div>
+    <div class="ev-list" id="ev-list"><div class="empty-hint">Sem eventos ainda.</div></div>
+  </div>
+</div>
+
+<script>
+const COLORS=['#ef4444','#6366f1','#22c55e','#f59e0b','#38bdf8','#f472b6','#a78bfa','#fb923c','#1a1a1a','#e2e8f0'];
+let state = { teams:{ home:{name:"",col:"#ef4444"}, away:{name:"",col:"#6366f1"} } };
+let dbt = {home:null,away:null};
+
+const ws = new WebSocket(`ws://${location.host}`);
+const dot = document.getElementById('ws-dot');
+
+ws.onopen = () => dot.classList.add('connected');
+ws.onclose = () => dot.classList.remove('connected');
+
+ws.onmessage = e => {
+  const msg = JSON.parse(e.data);
+  if(msg.type === 'state') { state = msg.state; updateUI(); }
+};
+
+function send(obj){ if(ws.readyState===1) ws.send(JSON.stringify(obj)); }
+
+function sendCustom(){
+  const txt = document.getElementById('f-custom').value.trim();
+  if(!txt) return;
+  send({action:'custom', side:document.getElementById('f-ct').value, txt});
+  document.getElementById('f-custom').value='';
+}
+
+function updateUI(){
+  // Labels
+  ['lh','lhu'].forEach(id=>{ const el=document.getElementById(id); if(el) el.textContent=state.teams.home.name||'Casa'; });
+  ['la','lau'].forEach(id=>{ const el=document.getElementById(id); if(el) el.textContent=state.teams.away.name||'Fora'; });
+  document.getElementById('ev-count').textContent = state.events.length;
+  const evList = document.getElementById('ev-list');
+  if(!state.events.length){ evList.innerHTML='<div class="empty-hint">Sem eventos ainda.</div>'; return; }
+  evList.innerHTML = state.events.map((ev,i)=>`
+    <div class="ev-item">
+      <div style="font-size:14px">${{goal:'⚽',yellow:'🟨',red:'🟥',custom:'📌'}[ev.type]||'•'}</div>
+      <div class="ev-txt"><span style="font-weight:700;color:var(--text3)">${ev.min}'</span> ${ev.txt}</div>
+      <button class="btn-del" onclick="send({action:'delEvent',index:${i}})">✕</button>
+    </div>`).join('');
+}
+
+// Colors
+function initColors(){
+  ['home','away'].forEach(side=>{
+    document.getElementById('colors-'+side).innerHTML = COLORS.map(c=>`
+      <div class="cdot" style="background:${c};border-color:${state.teams[side].col===c?'#fff':'transparent'}"
+        onclick="pickColor('${side}','${c}',this)"></div>`).join('');
+  });
+}
+function pickColor(side,col,el){
+  document.querySelectorAll('#colors-'+side+' .cdot').forEach(x=>x.style.borderColor='transparent');
+  el.style.borderColor='#fff';
+  state.teams[side].col=col;
+  send({action:'setColor',side,col});
+}
+
+// Search
+function onType(side){ clearTimeout(dbt[side]); dbt[side]=setTimeout(()=>doSearch(side),380); }
+async function doSearch(side){
+  const q=document.getElementById('f-'+side).value.trim();
+  const res=document.getElementById('res-'+side);
+  if(q.length<2){res.style.display='none';return;}
+  res.style.display='block';
+  res.innerHTML=`<div style="display:flex;align-items:center;gap:8px;padding:10px 12px;color:var(--text3);font-size:12px"><div class="spinner"></div> A pesquisar...</div>`;
+  try{
+    const r=await fetch(`/api/logo/search?q=${encodeURIComponent(q)}`);
+    const clubs=await r.json();
+    if(!clubs.length){res.innerHTML=`<div style="padding:10px 12px;color:var(--text3);font-size:12px">Sem resultados</div>`;return;}
+    res.innerHTML=clubs.map(c=>`
+      <div class="s-item" onclick='pickTeam("${side}",${JSON.stringify(c).replace(/"/g,"&quot;")})'>
+        <div class="s-mini-logo"><img src="${c.proxyLogo}" alt="${c.name}"></div>
+        <div><div class="s-name">${c.name}</div><div class="s-sub">${c.country}</div></div>
+      </div>`).join('');
+  }catch(e){res.innerHTML=`<div style="padding:10px 12px;color:var(--red);font-size:12px">Erro: ${e.message}</div>`;}
+}
+
+function pickTeam(side,c){
+  if(typeof c==='string') c=JSON.parse(c);
+  document.getElementById('f-'+side).value=c.name;
+  document.getElementById('res-'+side).style.display='none';
+  const init=c.name.slice(0,2).toUpperCase();
+  document.getElementById('prev-'+side).innerHTML=`
+    <div class="prev-logo"><img src="${c.proxyLogo}" alt="${c.name}"></div>
+    <div><div style="font-size:13px;font-weight:700">${c.name}</div><div style="font-size:11px;color:#00d084;margin-top:2px">✓ Logo carregado</div></div>`;
+  send({action:'setTeam', side, team:{name:c.name, logo:c.proxyLogo, col:state.teams[side].col}});
+}
+
+document.addEventListener('click',e=>{
+  ['home','away'].forEach(s=>{
+    const res=document.getElementById('res-'+s);
+    if(res&&!res.contains(e.target)&&e.target!==document.getElementById('f-'+s)) res.style.display='none';
+  });
+});
+
+initColors();
+updateUI();
+</script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Scoreboard — Stream Overlays</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:transparent;font-family:'Segoe UI',system-ui,sans-serif;color:#f1f5f9;margin:0;padding:0}
+@keyframes goalPop{0%{transform:scale(.7);opacity:0}60%{transform:scale(1.18)}100%{transform:scale(1);opacity:1}}
+@keyframes livePulse{0%,100%{opacity:1}50%{opacity:.25}}
+@keyframes slideDown{from{transform:translateY(-12px);opacity:0}to{transform:translateY(0);opacity:1}}
+.sb{width:100%;background:linear-gradient(145deg,#13161f 0%,#0e1118 100%);border:1px solid rgba(255,255,255,.07);border-radius:16px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.6)}
+.sb-strip{height:3px}
+.sb-header{display:flex;align-items:center;justify-content:center;gap:8px;padding:10px 20px;border-bottom:1px solid rgba(255,255,255,.05);background:rgba(255,255,255,.02)}
+.sb-comp{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,.4)}
+.sb-live-badge{display:flex;align-items:center;gap:5px;background:rgba(255,71,87,.12);border:1px solid rgba(255,71,87,.25);border-radius:20px;padding:2px 10px 2px 7px;font-size:10px;font-weight:700;color:#ff4757;letter-spacing:.5px}
+.sb-live-dot{width:6px;height:6px;border-radius:50%;background:#ff4757;animation:livePulse 1.4s ease infinite}
+.sb-ht-badge{background:rgba(255,165,2,.1);border:1px solid rgba(255,165,2,.25);border-radius:20px;padding:3px 10px;font-size:10px;font-weight:700;color:#ffa502}
+.sb-ft-badge{background:rgba(160,174,192,.08);border:1px solid rgba(160,174,192,.15);border-radius:20px;padding:3px 10px;font-size:10px;font-weight:700;color:#718096}
+.sb-main{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:20px 24px;gap:12px}
+.sb-team{display:flex;flex-direction:column;align-items:center;gap:10px}
+.sb-logo{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;overflow:hidden;border:2px solid rgba(255,255,255,.1);background:#fff;box-shadow:0 4px 20px rgba(0,0,0,.4)}
+.sb-logo img{width:90%;height:90%;object-fit:contain;display:block}
+.sb-logo-init{font-size:18px;font-weight:800}
+.sb-team-name{font-size:13px;font-weight:700;text-align:center}
+.sb-center{display:flex;flex-direction:column;align-items:center;gap:6px}
+.sb-score-row{display:flex;align-items:center;gap:6px}
+.sb-score-box{display:flex;align-items:center;justify-content:center;width:52px;height:52px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;font-size:36px;font-weight:800;line-height:1}
+.sb-score-sep{font-size:22px;font-weight:300;color:rgba(255,255,255,.2);margin:0 2px}
+.sb-time-row{display:flex;align-items:center;gap:6px}
+.sb-time{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:5px 14px;font-size:14px;font-weight:700;letter-spacing:.5px}
+.sb-period-badge{font-size:10px;font-weight:600;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.8px}
+.sb-events{border-top:1px solid rgba(255,255,255,.05);background:rgba(0,0,0,.2)}
+.sb-event{display:flex;align-items:center;gap:10px;padding:7px 20px;border-bottom:1px solid rgba(255,255,255,.03);animation:slideDown .3s ease}
+.sb-event:last-child{border-bottom:none}
+.sb-event-min{font-size:11px;font-weight:700;color:rgba(255,255,255,.3);min-width:30px}
+.sb-event-pill{width:22px;height:22px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0}
+.sb-event-txt{font-size:12px;color:rgba(255,255,255,.7);flex:1;font-weight:500}
+.goal-pop{animation:goalPop .5s cubic-bezier(.34,1.56,.64,1)}
+</style>
+</head>
+<body>
+<div id="sb-wrap"></div>
+<script>
+let state = {
+  home:0, away:0, min:0, sec:0, period:"1H", running:false, events:[],
+  teams:{ home:{name:"",logo:"",col:"#ef4444"}, away:{name:"",logo:"",col:"#6366f1"} },
+  comp:"Liga Portugal"
+};
+
+const ws = new WebSocket(`ws://${location.host}`);
+
+ws.onmessage = e => {
+  const msg = JSON.parse(e.data);
+  if(msg.type === "state"){
+    const prevHome = state.home, prevAway = state.away;
+    state = msg.state;
+    render(prevHome, prevAway);
+  } else if(msg.type === "tick"){
+    state.min = msg.min; state.sec = msg.sec; state.period = msg.period;
+    updateTime();
+  }
+};
+
+function timeStr(){ if(state.period==="HT") return "HT"; if(state.period==="FT") return "FT"; return state.min+"'"; }
+function periodLabel(){ return {"1H":"1ª Parte","2H":"2ª Parte","HT":"Intervalo","ET":"Prol.","FT":"Terminado"}[state.period]||state.period; }
+
+function statusBadge(){
+  if(state.period==="HT") return `<div class="sb-ht-badge">☕ Intervalo</div>`;
+  if(state.period==="FT") return `<div class="sb-ft-badge">🏁 Terminado</div>`;
+  return `<div class="sb-live-badge"><div class="sb-live-dot"></div> AO VIVO</div>`;
+}
+
+function evIcon(type){
+  const m={goal:["rgba(0,208,132,.15)","#00d084","⚽"],yellow:["rgba(255,165,2,.15)","#ffa502","🟨"],red:["rgba(255,71,87,.12)","#ff4757","🟥"],custom:["rgba(99,102,241,.1)","#818cf8","📌"]};
+  const[bg,col,icon]=m[type]||m.custom;
+  return `<div class="sb-event-pill" style="background:${bg};color:${col}">${icon}</div>`;
+}
+
+function logoBlock(side){
+  const t=state.teams[side]; const col=t.col; const init=(t.name||"??").slice(0,2).toUpperCase();
+  const border=`2px solid ${col}55`;
+  const glow=`0 0 20px ${col}33, 0 4px 20px rgba(0,0,0,.5)`;
+  if(t.logo) return `<div class="sb-logo" style="border:${border};box-shadow:${glow}"><img src="${t.logo}" alt="${t.name}" onerror="this.style.display='none';this.nextSibling.style.display='flex'"><div class="sb-logo-init" style="display:none;color:${col}">${init}</div></div>`;
+  return `<div class="sb-logo" style="border:${border};box-shadow:${glow};background:${col}18"><div class="sb-logo-init" style="color:${col}">${init}</div></div>`;
+}
+
+function updateTime(){
+  const t = document.querySelector(".sb-time");
+  const p = document.querySelector(".sb-period-badge");
+  if(t) t.textContent = timeStr();
+  if(p) p.textContent = periodLabel();
+}
+
+function render(prevHome, prevAway){
+  const hc=state.teams.home.col, ac=state.teams.away.col;
+  const recent=state.events.slice(0,3);
+  document.getElementById("sb-wrap").innerHTML=`
+    <div class="sb">
+      <div class="sb-strip" style="background:linear-gradient(90deg,${hc},${ac})"></div>
+      <div class="sb-header">
+        <span class="sb-comp">${state.comp||"COMPETIÇÃO"}</span>
+        ${statusBadge()}
+      </div>
+      <div class="sb-main">
+        <div class="sb-team">${logoBlock("home")}<div class="sb-team-name">${state.teams.home.name||"Casa"}</div></div>
+        <div class="sb-center">
+          <div class="sb-score-row">
+            <div class="sb-score-box" id="sc-home" style="color:${hc}">${state.home}</div>
+            <div class="sb-score-sep">:</div>
+            <div class="sb-score-box" id="sc-away" style="color:${ac}">${state.away}</div>
+          </div>
+          <div class="sb-time-row">
+            <div class="sb-time">${timeStr()}</div>
+            <div class="sb-period-badge">${periodLabel()}</div>
+          </div>
+        </div>
+        <div class="sb-team">${logoBlock("away")}<div class="sb-team-name">${state.teams.away.name||"Fora"}</div></div>
+      </div>
+      ${recent.length?`<div class="sb-events">${recent.map(ev=>`<div class="sb-event"><div class="sb-event-min">${ev.min}'</div>${evIcon(ev.type)}<div class="sb-event-txt">${ev.txt}</div></div>`).join("")}</div>`:""}
+    </div>`;
+  // Animate goal
+  if(prevHome !== undefined && state.home > prevHome){ const el=document.getElementById("sc-home"); if(el){el.classList.remove("goal-pop");void el.offsetWidth;el.classList.add("goal-pop");} }
+  if(prevAway !== undefined && state.away > prevAway){ const el=document.getElementById("sc-away"); if(el){el.classList.remove("goal-pop");void el.offsetWidth;el.classList.add("goal-pop");} }
+}
+
+render();
+</script>
+</body>
+</html>

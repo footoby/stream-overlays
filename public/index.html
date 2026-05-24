@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Stream Overlays</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0f1117;font-family:'Segoe UI',system-ui,sans-serif;color:#f1f5f9;min-height:100vh;padding:2rem}
+h1{font-size:24px;font-weight:700;margin-bottom:6px}
+.sub{color:#64748b;font-size:14px;margin-bottom:2rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.card{background:#1a1d27;border:1px solid #2a2f47;border-radius:12px;padding:20px;text-decoration:none;color:inherit;transition:.2s;display:block}
+.card:hover{border-color:#6366f1;background:#22263a;transform:translateY(-2px)}
+.card-icon{font-size:28px;margin-bottom:10px}
+.card-title{font-size:16px;font-weight:700;margin-bottom:4px}
+.card-desc{font-size:13px;color:#94a3b8;line-height:1.5}
+.card-badge{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;margin-top:8px;background:rgba(99,102,241,.15);color:#818cf8;border:1px solid rgba(99,102,241,.3)}
+.api-box{background:#1a1d27;border:1px solid #2a2f47;border-radius:12px;padding:20px;margin-top:2rem}
+.api-box h2{font-size:14px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px}
+.api-url{background:#0f1117;border:1px solid #374151;border-radius:6px;padding:8px 12px;font-family:monospace;font-size:13px;color:#818cf8;display:block;margin-bottom:8px}
+</style>
+</head>
+<body>
+<h1>🎮 Stream Overlays</h1>
+<p class="sub">Todos os overlays para OBS. Copia o URL de cada overlay para o Browser Source.</p>
+
+<div class="grid">
+  <a href="/scoreboard" class="card">
+    <div class="card-icon">⚽</div>
+    <div class="card-title">Scoreboard ao vivo</div>
+    <div class="card-desc">Marcador, relógio, golos, cartões e logos reais das equipas.</div>
+    <span class="card-badge">OBS READY</span>
+  </a>
+  <a href="/tips" class="card">
+    <div class="card-icon">💡</div>
+    <div class="card-title">Tips ao vivo</div>
+    <div class="card-desc">Painel de tips com pick, odd, stake e estado. Auto-scroll para OBS.</div>
+    <span class="card-badge">OBS READY</span>
+  </a>
+  <a href="/countdown" class="card">
+    <div class="card-icon">⏳</div>
+    <div class="card-title">Countdown próximo jogo</div>
+    <div class="card-desc">Contador regressivo até ao jogo com equipas e tip associada.</div>
+    <span class="card-badge">OBS READY</span>
+  </a>
+  <a href="/probability" class="card">
+    <div class="card-icon">📊</div>
+    <div class="card-title">Probabilidade de vitória</div>
+    <div class="card-desc">Barra de tensão ao vivo com % de vitória e estatísticas do jogo.</div>
+    <span class="card-badge">OBS READY</span>
+  </a>
+  <a href="/heatmap" class="card">
+    <div class="card-icon">🔥</div>
+    <div class="card-title">Heatmap de golos</div>
+    <div class="card-desc">Zonas quentes por período — quando cada equipa costuma marcar.</div>
+    <span class="card-badge">OBS READY</span>
+  </a>
+  <a href="/alert" class="card">
+    <div class="card-icon">🔔</div>
+    <div class="card-title">Alerta de tip</div>
+    <div class="card-desc">Popup animado quando uma nova tip é publicada na stream.</div>
+    <span class="card-badge">OBS READY</span>
+  </a>
+  <a href="/admin" class="card" style="border-color:#374151">
+    <div class="card-icon">⚙️</div>
+    <div class="card-title">Painel Admin</div>
+    <div class="card-desc">Gere todas as tips, jogos e configurações num único painel.</div>
+    <span class="card-badge" style="background:rgba(34,197,94,.1);color:#22c55e;border-color:rgba(34,197,94,.3)">ADMIN</span>
+  </a>
+</div>
+
+<div class="api-box">
+  <h2>🔌 Logo API</h2>
+  <span class="api-url">GET /api/logo/search?q=benfica</span>
+  <span class="api-url">GET /api/logo/img?url={wikimedia_url}</span>
+  <p style="font-size:12px;color:#64748b">O proxy de logos carrega imagens do Wikimedia server-side, evitando bloqueios CORS.</p>
+</div>
+</body>
+</html>
